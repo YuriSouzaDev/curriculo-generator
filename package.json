@@ -2,15 +2,18 @@
   "name": "cv",
   "private": true,
   "version": "0.0.0",
-  "homepage": "github-page/",
+  "homepage": "https://yurisouzadev.github.io/curriculo-generator",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "gh-pages": "^6.1.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
