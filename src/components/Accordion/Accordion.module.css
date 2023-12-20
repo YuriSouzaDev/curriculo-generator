@@ -1,0 +1,28 @@
+.personal__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #994d1c;
+  border-radius: 8px 8px 0 0;
+  padding: 16px 12px;
+  cursor: pointer;
+}
+
+.personal__info h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.open__form {
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icon__rotate {
+  transform: rotate(180deg);
+}

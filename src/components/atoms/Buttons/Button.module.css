@@ -1,0 +1,20 @@
+.button {
+  background: #925ff0;
+  padding: 0.5rem 1rem;
+  border-radius: 1.875rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: -0.7px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+  width: max-content;
+  &:hover {
+    background: #a87ff3;
+  }
+  &:active {
+    background: #5e3a9e;
+  }
+}

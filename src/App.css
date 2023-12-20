@@ -1,0 +1,21 @@
+.container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  padding: 20px;
+  height: 800px;
+}
+
+.form__container {
+  background: #ead196;
+  border-radius: 20px;
+  padding: 20px;
+  height: 100%;
+}
+
+.cv__title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: #bf3131;
+}

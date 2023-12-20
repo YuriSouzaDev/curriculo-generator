@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background: #e48f45;
+  border-radius: 0 0 8px 8px;
+  padding: 10px 12px 0;
+  padding-top: 0;
+  height: 0;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.open__form {
+  padding: 10px 12px 0;
+  height: 300px;
+  transition: 1s;
+  transition: all 0.5s ease;
+}
+
+.input__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
