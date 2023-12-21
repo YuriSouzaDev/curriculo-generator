@@ -8,6 +8,7 @@
   height: 0;
   transition: all 0.5s ease;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .open__form {

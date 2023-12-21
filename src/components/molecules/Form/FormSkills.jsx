@@ -1,10 +1,9 @@
-// import Button from '../../atoms/Buttons/Button';
 import React from 'react';
 import Accordion from '../../atoms/Accordion/Accordion';
 import Input from '../../atoms/inputs/Input';
 import styles from './FormPersonalInfo.module.css';
 
-function FormPersonalInfo() {
+function FormSkills() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
 
   function handleOpen(isOpen) {
@@ -21,8 +20,8 @@ function FormPersonalInfo() {
     : `${styles.form} ${styles.open__form}`;
 
   return (
-    <>
-      <Accordion name={'Personal Informations'} onToggle={handleOpen} />
+    <div>
+      <Accordion name={'Skills'} onToggle={handleOpen} />
       <form className={formClass} onSubmit={handleSubmit}>
         <div className={styles.input__container}>
           <div className={styles.input__item}>
@@ -83,8 +82,8 @@ function FormPersonalInfo() {
         </div>
         {/* <Button name="Submit" type="submit" /> */}
       </form>
-    </>
+    </div>
   );
 }
 
-export default FormPersonalInfo;
+export default FormSkills;
