@@ -1,11 +1,3 @@
-.container {
-  max-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  padding: 20px;
-  height: 800px;
-}
-
 .form__container {
   background: #ead196;
   border-radius: 20px;
