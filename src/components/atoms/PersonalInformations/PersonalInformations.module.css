@@ -1,0 +1,23 @@
+.curriculum__container {
+  padding: 20px;
+  background: #38383b;
+}
+
+.name {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0.625rem;
+}
+
+.contact__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__list li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}

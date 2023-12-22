@@ -1,6 +1,6 @@
 import './App.css';
 import Provider from './utilities/Provider';
-import Home from './components/Pages/Home';
+import Home from './assets/pages/Home';
 
 const App = () => {
   return (

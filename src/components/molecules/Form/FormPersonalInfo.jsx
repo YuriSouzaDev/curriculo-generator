@@ -1,11 +1,16 @@
-// import Button from '../../atoms/Buttons/Button';
+import Button from '../../atoms/Buttons/Button';
 import React from 'react';
 import Accordion from '../../atoms/Accordion/Accordion';
 import Input from '../../atoms/inputs/Input';
 import styles from './FormPersonalInfo.module.css';
+import AppContext from '../../../utilities/AppContext';
 
 function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
+  const { setName, setLinkedinLink } = React.useContext(AppContext);
+
+  const nameRef = React.useRef();
+  const linkediLinknRef = React.useRef();
 
   function handleOpen(isOpen) {
     setIsAccordeonOpen(isOpen);
@@ -13,7 +18,9 @@ function FormPersonalInfo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('Deu certo');
+    setName(nameRef.current.value);
+    setLinkedinLink(linkediLinknRef.current.value);
+    console.log(linkediLinknRef.current.value);
   }
 
   const formClass = isAccordeonOpen
@@ -31,7 +38,7 @@ function FormPersonalInfo() {
               name="Nome"
               placeholder="Insira seu nome completo"
               id="nome"
-              // value={value}
+              inputRef={nameRef}
             />
           </div>
           <div className={styles.input__item}>
@@ -40,7 +47,7 @@ function FormPersonalInfo() {
               name="Linkedin"
               placeholder="Insira o link do seu perfil"
               id="linkedin"
-              // value={value}
+              inputRef={linkediLinknRef}
             />
           </div>
           <div className={styles.input__item}>
@@ -81,7 +88,7 @@ function FormPersonalInfo() {
             />
           </div>
         </div>
-        {/* <Button name="Submit" type="submit" /> */}
+        <Button name="Submit" type="submit" />
       </form>
     </>
   );

@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import styles from './Input.module.css';
 
-function Input({ value, name, id, placeholder, type, ...props }) {
+function Input({ inputRef, name, id, placeholder, type, ...props }) {
   return (
     <>
       <label className={styles.label} htmlFor={id}>
         {name}
       </label>
       <input
+        ref={inputRef}
         className={styles.input}
         type={type}
         placeholder={placeholder}
-        value={value}
         id={id}
         {...props}
       />
@@ -20,7 +20,7 @@ function Input({ value, name, id, placeholder, type, ...props }) {
 }
 
 Input.propTypes = {
-  value: PropTypes.string,
+  inputRef: PropTypes.object,
   name: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
