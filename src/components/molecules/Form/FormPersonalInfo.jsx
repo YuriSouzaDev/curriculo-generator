@@ -9,8 +9,11 @@ function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
   const { setName, setLinkedinLink } = React.useContext(AppContext);
 
+  const updateRef = React.useRef();
+  const timeoutRef = React.useRef(null);
   const nameRef = React.useRef();
   const linkediLinknRef = React.useRef();
+  console.log(updateRef.current);
 
   function handleOpen(isOpen) {
     setIsAccordeonOpen(isOpen);
@@ -18,10 +21,33 @@ function FormPersonalInfo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setName(nameRef.current.value);
-    setLinkedinLink(linkediLinknRef.current.value);
-    console.log(linkediLinknRef.current.value);
+
+    if (nameRef.current.value.length >= 1) {
+      updateRef.current.classList.add('activeUpdate');
+      setName(nameRef.current.value);
+      updateTimeout();
+    }
+
+    if (linkediLinknRef.current.value.length >= 1) {
+      setLinkedinLink(linkediLinknRef.current.value);
+    }
+
+    function updateTimeout() {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      timeoutRef.current = setTimeout(() => {
+        if (updateRef.current) {
+          updateRef.current.classList.remove('activeUpdate');
+        }
+      }, 2000);
+    }
   }
+
+  React.useEffect(() => {
+    return () => clearTimeout();
+  }, []);
 
   const formClass = isAccordeonOpen
     ? styles.form
@@ -29,6 +55,9 @@ function FormPersonalInfo() {
 
   return (
     <>
+      <div className={styles.update} ref={updateRef}>
+        <p>Curriculo Atualizado</p>
+      </div>
       <Accordion name={'Personal Informations'} onToggle={handleOpen} />
       <form className={formClass} onSubmit={handleSubmit}>
         <div className={styles.input__container}>

@@ -3,7 +3,7 @@ import AppContext from './AppContext';
 import propTypes from 'prop-types';
 
 function Provider({ children }) {
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState('Seu Nome');
   const [linkedinLink, setLinkedinLink] = React.useState('');
 
   const value = {

@@ -24,3 +24,19 @@
   gap: 10px 20px;
   margin-bottom: 20px;
 }
+
+.update {
+  position: absolute;
+  right: -10%;
+  background: #ff9800;
+  padding: 16px 20px;
+  border-radius: 4px 0 0 4px;
+  border-left: 4px solid #5f8670;
+  transition: all 0.3s ease-in;
+}
+
+.update p {
+  color: #820300;
+  font-weight: 400;
+  font-size: 1.125rem;
+}
