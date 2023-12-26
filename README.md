@@ -1,3 +1,16 @@
+<h1>Gerador de Curriculo</h1>
+
+
+
+Tasks
+
+[X] Transferir dados dos inputs para o curriculo
+[X] Manter dados no curriculo, no caso de atualizar apenas 1
+[ ] Fechamento de accordion ao clicar em outro
+[ ] Ajustar estilo do curriculo
+[ ] Colocar a opção de mais de um curriculo
+[ ] Manter as alterações salvas no storage
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
