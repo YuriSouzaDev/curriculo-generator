@@ -6,7 +6,7 @@ Tasks
 
 [X] Transferir dados dos inputs para o curriculo
 [X] Manter dados no curriculo, no caso de atualizar apenas 1
-[ ] Fechamento de accordion ao clicar em outro
+[ ] Fechamento de accordion ao clicar em outro <br>
 [ ] Ajustar estilo do curriculo
 [ ] Colocar a opção de mais de um curriculo
 [ ] Manter as alterações salvas no storage
