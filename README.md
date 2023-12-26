@@ -4,12 +4,12 @@
 
 Tasks
 
-[X] Transferir dados dos inputs para o curriculo
-[X] Manter dados no curriculo, no caso de atualizar apenas 1
-[ ] Fechamento de accordion ao clicar em outro <br>
-[ ] Ajustar estilo do curriculo
-[ ] Colocar a opção de mais de um curriculo
-[ ] Manter as alterações salvas no storage
+[X] Transferir dados dos inputs para o curriculo<br>
+[X] Manter dados no curriculo, no caso de atualizar apenas 1<br>
+[ ] Fechamento de accordion ao clicar em outro<br>
+[ ] Ajustar estilo do curriculo<br>
+[ ] Colocar a opção de mais de um curriculo<br>
+[ ] Manter as alterações salvas no storage<br>
 
 # React + Vite
 
