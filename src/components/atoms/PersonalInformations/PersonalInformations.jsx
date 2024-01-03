@@ -50,7 +50,7 @@ function PersonalInformations() {
         </li>
         <p>|</p>
         <li>
-          <a href={email} target="_blank" rel="noreferrer noopener">
+          <a href={`mailto:${email}`} target="_blank" rel="noreferrer noopener">
             <img src={gmailIcon} alt="email" />
             {email}
           </a>

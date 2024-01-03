@@ -79,7 +79,9 @@ function FormPersonalInfo() {
       regexValidation.phoneNumber.test(formattedPhoneNumber)
     ) {
       updateRef.current.classList.add('activeUpdate');
-      setWhatsapp(whatsappRef.current.value);
+      setWhatsapp(
+        whatsappRef.current.value.replace(/\s/g, '').replace(/[()-]/g, '')
+      );
       setWhatsappFormatted(formattedPhoneNumber);
       updateTimeout();
     }
@@ -162,7 +164,7 @@ function FormPersonalInfo() {
             {/* telefone */}
             <Input
               name="telefone"
-              placeholder="(XX) XXXXX-XXXX"
+              placeholder="(DD) X XXXX-XXXX"
               id="telefone"
               inputRef={whatsappRef}
             />
