@@ -8,8 +8,15 @@ import gmailIcon from '../../../assets/img/gmail_icon.svg';
 import githubIcon from '../../../assets/img/github_icon.svg';
 
 function PersonalInformations() {
-  const { name, linkedinLink, whatsapp, portifolio, email, github } =
-    React.useContext(AppContext);
+  const {
+    name,
+    linkedinLink,
+    whatsapp,
+    whatsappFormatted,
+    portifolio,
+    email,
+    github,
+  } = React.useContext(AppContext);
 
   return (
     <div className={styles.curriculum__container}>
@@ -18,35 +25,39 @@ function PersonalInformations() {
       </div>
       <ul className={styles.contact__list}>
         <li>
-          <a href={linkedinLink} target="blank">
+          <a href={linkedinLink} target="_blank" rel="noreferrer noopener">
             <img src={linkedinIcon} alt="Linkedin" />
             Linkedin
           </a>
         </li>
         <p>|</p>
         <li>
-          <a href={whatsapp} target="blank">
+          <a
+            href={`https://wa.me/${whatsapp}`}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <img src={whatsappIcon} alt="whatsapp" />
-            {whatsapp}
+            {whatsappFormatted}
           </a>
         </li>
         <p>|</p>
         <li>
-          <a href={portifolio} target="blank">
+          <a href={portifolio} target="_blank" rel="noreferrer noopener">
             <img src={portifolioIcon} alt="portifolio" />
             Portifólio
           </a>
         </li>
         <p>|</p>
         <li>
-          <a href={email} target="blank">
+          <a href={email} target="_blank" rel="noreferrer noopener">
             <img src={gmailIcon} alt="email" />
             {email}
           </a>
         </li>
         <p>|</p>
         <li>
-          <a href={github} target="blank">
+          <a href={github} target="_blank" rel="noreferrer noopener">
             <img src={githubIcon} alt="github" />
             Github
           </a>

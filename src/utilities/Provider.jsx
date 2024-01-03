@@ -6,6 +6,8 @@ function Provider({ children }) {
   const [name, setName] = React.useState('Seu Nome');
   const [linkedinLink, setLinkedinLink] = React.useState('');
   const [whatsapp, setWhatsapp] = React.useState('(99) 99999-9999');
+  const [whatsappFormatted, setWhatsappFormatted] =
+    React.useState('(99) 99999-9999');
   const [portifolio, setPortifolio] = React.useState('');
   const [email, setEmail] = React.useState('seuemail@email.com');
   const [github, setGithub] = React.useState('');
@@ -17,6 +19,8 @@ function Provider({ children }) {
     setLinkedinLink,
     whatsapp,
     setWhatsapp,
+    whatsappFormatted,
+    setWhatsappFormatted,
     portifolio,
     setPortifolio,
     email,

@@ -20,6 +20,7 @@ function FormPersonalInfo() {
     setName,
     setLinkedinLink,
     setWhatsapp,
+    setWhatsappFormatted,
     setPortifolio,
     setEmail,
     setGithub,
@@ -78,7 +79,8 @@ function FormPersonalInfo() {
       regexValidation.phoneNumber.test(formattedPhoneNumber)
     ) {
       updateRef.current.classList.add('activeUpdate');
-      setWhatsapp(formattedPhoneNumber);
+      setWhatsapp(whatsappRef.current.value);
+      setWhatsappFormatted(formattedPhoneNumber);
       updateTimeout();
     }
 
