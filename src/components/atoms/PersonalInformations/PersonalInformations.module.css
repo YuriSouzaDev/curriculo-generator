@@ -13,6 +13,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  color: #fff;
+  list-style: none;
 }
 
 .contact__list li a {
@@ -20,4 +23,11 @@
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact__list li a img {
+  width: 1rem;
+  height: 1rem;
 }

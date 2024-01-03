@@ -5,31 +5,78 @@ import Input from '../../atoms/inputs/Input';
 import styles from './FormPersonalInfo.module.css';
 import AppContext from '../../../utilities/AppContext';
 
+const regexValidation = {
+  name: /^[a-zA-Z.'-\s]+$/,
+  email:
+    /^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i,
+  url: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
+  phoneNumber: /^\(\d{2}\)\s\d{9}$/,
+};
+
 function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
-  const { setName, setLinkedinLink } = React.useContext(AppContext);
+  const { setName, setLinkedinLink, setWhatsapp } =
+    React.useContext(AppContext);
 
+  console.log(regexValidation.url);
+
+  const nameRef = React.useRef();
+  const linkedinLinkRef = React.useRef();
+  const whatsappRef = React.useRef();
   const updateRef = React.useRef();
   const timeoutRef = React.useRef(null);
-  const nameRef = React.useRef();
-  const linkediLinknRef = React.useRef();
-  console.log(updateRef.current);
 
   function handleOpen(isOpen) {
     setIsAccordeonOpen(isOpen);
   }
 
+  // Para formatação de numero de telefone
+  function formatPhoneNumber(value) {
+    const numericValue = value.replace(/\D/g, '');
+
+    const formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice(
+      2,
+      11
+    )}`;
+
+    return formattedValue;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (nameRef.current.value.length >= 1) {
+    const formattedPhoneNumber = formatPhoneNumber(whatsappRef.current.value);
+
+    if (
+      nameRef.current.value.length >= 1 &&
+      regexValidation.name.test(nameRef.current.value)
+    ) {
       updateRef.current.classList.add('activeUpdate');
       setName(nameRef.current.value);
       updateTimeout();
     }
 
-    if (linkediLinknRef.current.value.length >= 1) {
-      setLinkedinLink(linkediLinknRef.current.value);
+    if (
+      linkedinLinkRef.current.value.length >= 1 &&
+      regexValidation.url.test(linkedinLinkRef.current.value)
+    ) {
+      updateRef.current.classList.add('activeUpdate');
+      setLinkedinLink(linkedinLinkRef.current.value);
+      updateTimeout();
+    }
+    /* else {
+      updateRef.current.classList.add('activeUpdate');
+      updateRef.current.innerHTML = 'URL do Linkedin inválida';
+      updateTimeout();
+    } */
+
+    if (
+      formattedPhoneNumber.length >= 1 &&
+      regexValidation.phoneNumber.test(formattedPhoneNumber)
+    ) {
+      updateRef.current.classList.add('activeUpdate');
+      setWhatsapp(formattedPhoneNumber);
+      updateTimeout();
     }
 
     function updateTimeout() {
@@ -46,7 +93,7 @@ function FormPersonalInfo() {
   }
 
   React.useEffect(() => {
-    return () => clearTimeout();
+    return () => clearTimeout(timeoutRef.current);
   }, []);
 
   const formClass = isAccordeonOpen
@@ -76,7 +123,7 @@ function FormPersonalInfo() {
               name="Linkedin"
               placeholder="Insira o link do seu perfil"
               id="linkedin"
-              inputRef={linkediLinknRef}
+              inputRef={linkedinLinkRef}
             />
           </div>
           <div className={styles.input__item}>
@@ -85,7 +132,7 @@ function FormPersonalInfo() {
               name="Telefone"
               placeholder="(XX) XXXXX-XXXX"
               id="telefone"
-              // value={value}
+              inputRef={whatsappRef}
             />
           </div>
           <div className={styles.input__item}>
@@ -117,7 +164,7 @@ function FormPersonalInfo() {
             />
           </div>
         </div>
-        <Button name="Submit" type="submit" />
+        <Button name="Enviar" type="submit" />
       </form>
     </>
   );
