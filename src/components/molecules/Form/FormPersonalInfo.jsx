@@ -9,20 +9,20 @@ const regexValidation = {
   name: /^[a-zA-Z.'-\s]+$/,
   email:
     /^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i,
-  url: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
+  linkedinUrl: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
   phoneNumber: /^\(\d{2}\)\s\d{9}$/,
+  portfolioUrl: /^https:\/\/.+$/i,
 };
 
 function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
-  const { setName, setLinkedinLink, setWhatsapp } =
+  const { setName, setLinkedinLink, setWhatsapp, setPortifolio } =
     React.useContext(AppContext);
-
-  console.log(regexValidation.url);
 
   const nameRef = React.useRef();
   const linkedinLinkRef = React.useRef();
   const whatsappRef = React.useRef();
+  const portifolioRef = React.useRef();
   const updateRef = React.useRef();
   const timeoutRef = React.useRef(null);
 
@@ -58,17 +58,12 @@ function FormPersonalInfo() {
 
     if (
       linkedinLinkRef.current.value.length >= 1 &&
-      regexValidation.url.test(linkedinLinkRef.current.value)
+      regexValidation.linkedinUrl.test(linkedinLinkRef.current.value)
     ) {
       updateRef.current.classList.add('activeUpdate');
       setLinkedinLink(linkedinLinkRef.current.value);
       updateTimeout();
     }
-    /* else {
-      updateRef.current.classList.add('activeUpdate');
-      updateRef.current.innerHTML = 'URL do Linkedin inválida';
-      updateTimeout();
-    } */
 
     if (
       formattedPhoneNumber.length >= 1 &&
@@ -76,6 +71,15 @@ function FormPersonalInfo() {
     ) {
       updateRef.current.classList.add('activeUpdate');
       setWhatsapp(formattedPhoneNumber);
+      updateTimeout();
+    }
+
+    if (
+      portifolioRef.current.value.length >= 1 &&
+      regexValidation.portfolioUrl.test(portifolioRef.current.value)
+    ) {
+      updateRef.current.classList.add('activeUpdate');
+      setPortifolio(portifolioRef.current.value);
       updateTimeout();
     }
 
@@ -111,7 +115,7 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* Nome completo */}
             <Input
-              name="Nome"
+              name="nome"
               placeholder="Insira seu nome completo"
               id="nome"
               inputRef={nameRef}
@@ -120,7 +124,7 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* Linkedin */}
             <Input
-              name="Linkedin"
+              name="linkedin"
               placeholder="Insira o link do seu perfil"
               id="linkedin"
               inputRef={linkedinLinkRef}
@@ -129,7 +133,7 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* telefone */}
             <Input
-              name="Telefone"
+              name="telefone"
               placeholder="(XX) XXXXX-XXXX"
               id="telefone"
               inputRef={whatsappRef}
@@ -138,9 +142,10 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* Portifolio */}
             <Input
-              name="Link Portifólio"
+              name="portifólio"
               placeholder="Insira o link do seu portifolio"
-              id="telefone"
+              id="portifólio"
+              inputRef={portifolioRef}
               // value={value}
             />
           </div>
