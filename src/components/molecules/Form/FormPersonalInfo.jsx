@@ -7,8 +7,7 @@ import AppContext from '../../../utilities/AppContext';
 
 const regexValidation = {
   name: /^[a-zA-Z.'-\s]+$/,
-  email:
-    /^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/i,
+  email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
   linkedinUrl: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
   phoneNumber: /^\(\d{2}\)\s\d{9}$/,
   portfolioUrl: /^https:\/\/.+$/i,
@@ -16,13 +15,14 @@ const regexValidation = {
 
 function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
-  const { setName, setLinkedinLink, setWhatsapp, setPortifolio } =
+  const { setName, setLinkedinLink, setWhatsapp, setPortifolio, setEmail } =
     React.useContext(AppContext);
 
   const nameRef = React.useRef();
   const linkedinLinkRef = React.useRef();
   const whatsappRef = React.useRef();
   const portifolioRef = React.useRef();
+  const emailRef = React.useRef();
   const updateRef = React.useRef();
   const timeoutRef = React.useRef(null);
 
@@ -80,6 +80,15 @@ function FormPersonalInfo() {
     ) {
       updateRef.current.classList.add('activeUpdate');
       setPortifolio(portifolioRef.current.value);
+      updateTimeout();
+    }
+
+    if (
+      emailRef.current.value.length >= 1 &&
+      regexValidation.email.test(emailRef.current.value)
+    ) {
+      updateRef.current.classList.add('activeUpdate');
+      setEmail(emailRef.current.value);
       updateTimeout();
     }
 
@@ -142,21 +151,20 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* Portifolio */}
             <Input
-              name="portifólio"
+              name="portifolio"
               placeholder="Insira o link do seu portifolio"
-              id="portifólio"
+              id="portifolio"
               inputRef={portifolioRef}
-              // value={value}
             />
           </div>
           <div className={styles.input__item}>
             {/* Email */}
             <Input
-              name="Email"
+              name="email"
               placeholder="Insira seu email"
               id="email"
               type="email"
-              // value={value}
+              inputRef={emailRef}
             />
           </div>
           <div className={styles.input__item}>
