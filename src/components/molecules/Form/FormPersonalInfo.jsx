@@ -8,21 +8,29 @@ import AppContext from '../../../utilities/AppContext';
 const regexValidation = {
   name: /^[a-zA-Z.'-\s]+$/,
   email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-  linkedinUrl: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/,
+  linkedinUrl: /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/,
   phoneNumber: /^\(\d{2}\)\s\d{9}$/,
   portfolioUrl: /^https:\/\/.+$/i,
+  githubUrl: /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/?$/,
 };
 
 function FormPersonalInfo() {
   const [isAccordeonOpen, setIsAccordeonOpen] = React.useState(false);
-  const { setName, setLinkedinLink, setWhatsapp, setPortifolio, setEmail } =
-    React.useContext(AppContext);
+  const {
+    setName,
+    setLinkedinLink,
+    setWhatsapp,
+    setPortifolio,
+    setEmail,
+    setGithub,
+  } = React.useContext(AppContext);
 
   const nameRef = React.useRef();
   const linkedinLinkRef = React.useRef();
   const whatsappRef = React.useRef();
   const portifolioRef = React.useRef();
   const emailRef = React.useRef();
+  const githubRef = React.useRef();
   const updateRef = React.useRef();
   const timeoutRef = React.useRef(null);
 
@@ -89,6 +97,15 @@ function FormPersonalInfo() {
     ) {
       updateRef.current.classList.add('activeUpdate');
       setEmail(emailRef.current.value);
+      updateTimeout();
+    }
+
+    if (
+      githubRef.current.value.length >= 1 &&
+      regexValidation.githubUrl.test(githubRef.current.value)
+    ) {
+      updateRef.current.classList.add('activeUpdate');
+      setGithub(githubRef.current.value);
       updateTimeout();
     }
 
@@ -170,10 +187,10 @@ function FormPersonalInfo() {
           <div className={styles.input__item}>
             {/* Github */}
             <Input
-              name="Github"
+              name="github"
               placeholder="Insira o link do seu perfil"
-              id="telefone"
-              // value={value}
+              id="github"
+              inputRef={githubRef}
             />
           </div>
         </div>
